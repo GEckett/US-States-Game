@@ -38,10 +38,7 @@ while len(correct_answers) < 50:
     if answer_state in correct_answers:
         pass
     elif answer_state == "Exit":
-        missing_answers = []
-        for state in all_states:
-            if state not in correct_answers:
-                missing_answers.append(state)
+        missing_answers = [state for state in all_states if state not in correct_answers]
         new_data = pandas.DataFrame(missing_answers)
         new_data.to_csv("states_to_learn.csv")
         break
